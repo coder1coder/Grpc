@@ -1,0 +1,29 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "Grpc.Contracts";
+
+package Grpc.Server;
+
+service OrderService {
+    rpc GetOrders(GetOrdersRequest) returns (stream GetOrdersResponse);
+    rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+}
+
+message GetOrdersRequest {
+  int32 userId = 1;
+}
+
+message GetOrdersResponse {
+  int32 orderId = 1;
+  string number = 2;
+  int32 userId = 3;
+}
+
+message GetOrderRequest {
+  int32 orderId = 1;
+}
+
+message GetOrderResponse {
+  int32 orderId = 1;
+  string number = 2;
+}
